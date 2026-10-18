@@ -1,0 +1,14 @@
+{
+  "port": 8090,
+  "token": "change-me",
+  "timezone": "Europe/London",
+  "ics_url": "",
+  "location": {"name": "Moulescoomb, Brighton", "lat": 50.8625, "lon": -0.1170},
+  "servers": [
+    {"id": "provenance-1", "name": "Provenance-1", "site": "Brighton"},
+    {"id": "hpdesk2", "name": "hpdesk2", "site": "Brighton"},
+    {"id": "asuslap", "name": "AsusLap", "site": "Brighton"},
+    {"id": "hpdesk", "name": "hpdesk", "site": "Finchley",
+     "poll": {"url": "https://CHANGE-ME.example/stats", "token": "change-me"}}
+  ]
+}

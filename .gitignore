@@ -1,0 +1,7 @@
+config.json
+state.json
+.venv/
+.playwright-cli/
+__pycache__/
+.DS_Store
+.impeccable/

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<title>Dashboard</title>
+<meta name="viewport" content="width=1024, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="Dashboard">
+<meta name="format-detection" content="telephone=no">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<!--ICONS-->
+<div id="stage">
+  <header id="top">
+    <div id="clock">
+      <div id="time">--:--</div>
+      <div id="date">&nbsp;</div>
+    </div>
+    <button id="wx-now" type="button" aria-label="Change weather location">
+      <span id="wx-icon"></span>
+      <span id="wx-temp"></span>
+      <span id="wx-text"></span>
+    </button>
+  </header>
+
+  <div id="allday"></div>
+
+  <section id="axis" aria-label="Today's timeline">
+    <div id="axis-in"></div>
+  </section>
+
+  <section id="pipe-wrap" aria-label="Upcoming events"><div id="pipe"></div></section>
+
+  <section id="servers" aria-label="Servers"></section>
+</div>
+
+<div id="banner" hidden></div>
+
+<div id="sheet" hidden>
+  <div id="sheet-box">
+    <div id="sheet-head">
+      <h2>Weather location</h2>
+      <button id="sheet-close" type="button" aria-label="Close"><svg class="ic"><use xlink:href="#i-x"/></svg></button>
+    </div>
+    <p id="sheet-now"></p>
+    <label for="q">Search for a place</label>
+    <input id="q" type="text" autocomplete="off" autocorrect="off" autocapitalize="words" placeholder="e.g. Hove, or Finchley">
+    <ul id="results"></ul>
+  </div>
+</div>
+
+<script src="/app.js"></script>
+</body>
+</html>
