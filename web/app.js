@@ -14,7 +14,7 @@
   var searchTimer = null, driftStep = 0;
   var NO_DIM = /[?&]dim=0/.test(window.location.search);   // add ?dim=0 to the address to switch night dimming off
 
-  var VERSION = 'v7', logged = 0;
+  var VERSION = 'v8', logged = 0;
   function clog(msg) {   // sent to the server so a problem on the iPad can be read from hpdesk2's journal
     if (logged++ > 40) return;
     try {
@@ -364,6 +364,26 @@
                            : 'Cannot reach the dashboard server.';
   }
 
+  /* ------------------------------------------------------ motion marker */
+  // MotionWake on the iPad answers on its own loopback port. Turn the marker on in the MotionWake app.
+  function pollMotion() {
+    var x = new XMLHttpRequest(), m = $('motion'), done = false;
+    function next(ms) { if (!done) { done = true; setTimeout(pollMotion, ms); } }
+    x.open('GET', 'http://127.0.0.1:8095/status', true);
+    x.timeout = 2000;
+    x.onload = function () {
+      var s = null;
+      try { s = JSON.parse(x.responseText); } catch (e) { /* treated as no service */ }
+      var show = !!(s && s.showDot), moving = show && s.motion;
+      m.hidden = !show;
+      m.className = moving ? 'on' : '';
+      $('motion-text').textContent = moving ? 'Movement' : 'Still';
+      next(show ? 400 : 10000);
+    };
+    x.onerror = x.ontimeout = function () { m.hidden = true; next(60000); };
+    x.send();
+  }
+
   /* ------------------------------------------------------ location sheet */
   function openSheet() {
     $('sheet').hidden = false;
@@ -415,6 +435,7 @@
   setInterval(tickClock, 5000);
   setInterval(poll, POLL_MS);
   setInterval(renderBanner, 15000);
+  if (/iPad|iPhone/.test(navigator.userAgent)) pollMotion();
   window.addEventListener('resize', function () { renderAxis(); renderPipeline(); });
   $('pipe').addEventListener('scroll', updateMore);
 })();

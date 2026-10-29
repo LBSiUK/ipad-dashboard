@@ -34,6 +34,8 @@ Made for a screen that stays on all day:
 - Uses the **server's** clock, so a drifting iPad clock never shows the wrong time.
 - Shows a banner when it cannot reach the server.
 
+Pair it with [MotionWake](https://github.com/LBSiUK/MotionWake) on the iPad to turn the screen on when someone walks in and off once the room is still. While MotionWake's "Show movement on the dashboard" setting is on, a small marker at the top of the page lights up whenever its camera sees movement.
+
 ## How it works
 
 ```
